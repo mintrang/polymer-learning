@@ -1,0 +1,52 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+
+
+
+<dom-module id="icon-toggle">
+  <template>
+    <iron-icon icon = [[iconToggle]] check = [[check]]></iron-icon>
+  <style>
+     :host {
+        display: inline-block;
+           width: 49px;
+      }
+      iron-icon {
+        fill: rgba(0,0,0,0);
+        stroke: red;
+      }
+      :host([pressed]) iron-icon {
+        fill: red;
+      }
+  </style>
+  </template>
+  <script>
+    Polymer({
+      is:"icon-toggle",
+      properties:{
+        iconToggle:String,
+        check:{
+          type:Boolean,
+          value:false
+        },
+        pressed:{
+          type:Boolean,
+          value:false,
+           reflectToAttribute: true
+          
+        }
+      },
+      listeners: {
+      'tap': 'toggle'
+    },
+    toggle: function() {
+    
+      this.pressed = !this.pressed;
+      // if(this.pressed)
+      //   this.iconToggle = "star-border"
+      // else 
+      //   this.iconToggle = "star"
+    },
+    })
+  </script>
+</dom-module>
